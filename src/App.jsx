@@ -9,8 +9,8 @@ import { SuperTicTacToeMenu } from "./Games/SuperTicTacToe/Menu"
 
 
 export const debugMode = true
-export const serverURL = debugMode ? "http://localhost:4000" : "https://quaridor.onrender.com"
-export const clientURL = debugMode ? "http://localhost:5173" : "https://quaridor.netlify.app"
+export const serverURL = debugMode ? "http://localhost:4000" : "https://games-backend-8gxe.onrender.com"
+export const clientURL = debugMode ? "http://localhost:5173" : "https://games-tahashah.netlify.app"
 
 const RootLayout = () => {
   

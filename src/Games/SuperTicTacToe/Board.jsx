@@ -28,7 +28,7 @@ const Board = ({board, active=false, makeMove}) => {
     ${boards[Math.floor(board/3)][board %3] === 0 ? "bg-blue-600" : boards[Math.floor(board/3)][board %3] === 1 ? "bg-red-900" : active ? turn == 0 ? "bg-blue-400" : "bg-red-500" : "bg-neutral-900"}`}>
       {superBoard[board].map((row, y) =>
       <>
-        {row.map((col, x) => <Cell key={`board${board}-Cell${y*3+x}`} makeMove={() => {console.log(turn ,board, x, y), makeMove({board, x, y})}} val={superBoard[board][y][x]} won={boards[Math.floor(board/3)][board %3]} last={lastMove.board === board && lastMove.x === x && lastMove.y === y}/>)}
+        {row.map((col, x) => <Cell key={`board${board}-Cell${y*3+x}`} makeMove={() => makeMove({board, x, y})} val={superBoard[board][y][x]} won={boards[Math.floor(board/3)][board %3]} last={lastMove.board === board && lastMove.x === x && lastMove.y === y}/>)}
       </>)}
     </div>}
     </>

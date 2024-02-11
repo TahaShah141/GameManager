@@ -1,6 +1,5 @@
 export const defaultState = (playerCount) => {
 
-  console.log(playerCount)
   const players = []
   const fenceCount = Math.floor(20/playerCount)
   for (let team = 0; team < playerCount; team++) players.push({x: -1, y: -1, team, fenceCount, won: false})

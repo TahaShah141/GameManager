@@ -29,7 +29,6 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
 
   //generic function that dispatches moves on both side
   const makeMove = useCallback((payload) => {
-    console.log("makeMove")
       if (locked || !collapsed) return;
       if (socket) socket.emit("moveMade", room, payload)
       dispatch({type: "MOVE", payload})
@@ -99,7 +98,6 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
     })
 
     socket.on("connected", (currentSize, playerLimit) => {
-      console.log("SIZE", currentSize, "LIMIT", playerLimit)
       if (currentSize === playerLimit) {
         setLocked(false)
         setError("")
@@ -132,7 +130,6 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
     playerNumber,
     collapsed,
     makeMove: (payload) => {
-      console.log("MOVE", playerNumber, state.turn)
       if (playerNumber === undefined || playerNumber === state.turn)
       makeMove(payload)
     }
