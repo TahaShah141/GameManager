@@ -2,7 +2,7 @@ import React from 'react'
 import { useGameContext } from './GameContext'
 
 
-export const SuperTicTacToeBoard = ({makeMove, playerNumber}) => {
+export const SuperTicTacToeBoard = ({makeMove, playerNumber, newGame}) => {
 
   const { boards, winner, actives } = useGameContext()
 
@@ -15,7 +15,7 @@ export const SuperTicTacToeBoard = ({makeMove, playerNumber}) => {
         {row.map((col, x) => <Board key={`board${y*3+x}`} board={3*y+x} active={actives[y][x]} makeMove={makeMove}/>)}
       </>)}
       </div>
-      {winner !== -1 && <button className='text-white text-2xl p-4 bg-neutral-700 font-mono font-semibold rounded-xl border-4 border-black' onClick={() => {dispatch({type: "RESET"}); if (socket) socket.emit("newGame", room)}}>New Game</button>}
+      {winner !== -1 && <button className='text-white text-2xl p-4 bg-neutral-700 font-mono font-semibold rounded-xl border-4 border-black' onClick={newGame}>New Game</button>}
     </>
   )
 }
