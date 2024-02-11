@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 export const QuaridorMenu = () => {
   const [playerCount, setPlayerCount] = useState(2)
 
+  useEffect(() => {
+    document.title = "Quaridor"
+  }, [])
+
   useEffect(()=> {
     sessionStorage.setItem("playerCount", playerCount)
   }, [playerCount])

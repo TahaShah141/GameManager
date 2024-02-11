@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 
 export const SuperTicTacToeMenu = () => {
 
+  useEffect(() => {
+    document.title = "Super TicTacToe"
+  }, [])
+
   return (
     <div className='flex portrait:w-4/5 landscape:w-2/3 lg:landscape:w-1/3 flex-col gap-2 sm:gap-4'>
       <div className='flex flex-col gap-2 sm:gap-4'>
