@@ -15,7 +15,7 @@ export const clientURL = debugMode ? "http://localhost:5173" : "https://games-ta
 const RootLayout = () => {
   
   return (
-    <div className='flex flex-col h-screen bg-black items-center justify-center gap-2 text-white'>
+    <div className='flex flex-col min-h-screen bg-black items-center justify-center gap-2 text-white'>
       <Outlet />
     </div>
   )
