@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ===== Scrollbar CSS ===== */
+  
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #ffffff00;
+    border-radius: 16px;
+    border: 2px solid #ffffff00;
+  }
+
+  .upright {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
