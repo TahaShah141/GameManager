@@ -17,11 +17,13 @@ export const Quaridor = () => {
   }
 
   return (
-    <SocketProvider 
-    state={state} 
-    dispatch={dispatch} 
-    onCollapseChange={onCollapseChange}>
-      <QuaridorBoard />
-    </SocketProvider>
+    <div className='flex flex-col h-screen w-screen bg-black items-center justify-center gap-2 text-white'>
+      <SocketProvider 
+      state={state} 
+      dispatch={dispatch} 
+      onCollapseChange={onCollapseChange}>
+        <QuaridorBoard />
+      </SocketProvider>
+    </div>
   )
 }

@@ -11,10 +11,12 @@ export const SuperTicTacToe = () => {
   }, [])
 
   return (
-    <SocketProvider
-    state={{turn}} 
-    dispatch={dispatch}>
-      <SuperTicTacToeBoard />
-    </SocketProvider>
+    <div className='flex flex-col h-screen w-screen bg-black items-center justify-center gap-2 text-white'>
+      <SocketProvider
+      state={{turn}} 
+      dispatch={dispatch}>
+        <SuperTicTacToeBoard />
+      </SocketProvider>
+    </div>
   )
 }

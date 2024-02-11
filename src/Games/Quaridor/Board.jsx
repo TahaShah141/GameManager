@@ -137,7 +137,7 @@ const Controls = ({state, dispatch, makeMove, newGame, playerNumber}) => {
         <div className="flex flex-1 portrait:h-full landscape:w-full portrait:flex-col-reverse flex-col gap-2 sm:gap-4">
           <div className="flex flex-1 portrait:flex-row-reverse gap-2 font-mono text-black text-sm xs:text-lg">
             <div tabIndex={-1} onClick={(e) => {e.preventDefault(); dispatch({type: "FLIP"})}} className={`${buttonStyle} flex-1 landscape:p-2 sm:tracking-widest`}>Rotate</div>
-            <div tabIndex={-1} onClick={(e) => {e.preventDefault(); makeMove(true, state.hoverFence.x, state.hoverFence.y)}} className={`${buttonStyle} flex-1 landscape:p-2 sm:tracking-widest`}>Place</div>
+            <div tabIndex={-1} onClick={(e) => {e.preventDefault(); makeMove({fenceMode: true, x: state.hoverFence.x, y: state.hoverFence.y})}} className={`${buttonStyle} flex-1 landscape:p-2 sm:tracking-widest`}>Place</div>
           </div>
           <div tabIndex={-1} onClick={(e) => {e.preventDefault(); dispatch({type: "SHOW"})}} 
           className="bg-neutral-800 rounded-lg overflow-hidden flex flex-1 font-mono text-sm xs:text-lg border-2 border-neutral-700">
