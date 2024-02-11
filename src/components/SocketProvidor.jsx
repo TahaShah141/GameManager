@@ -171,9 +171,12 @@ const Chat = ({socket, room, collapsed, setCollapsed, messages, setMessages}) =>
 
   useEffect(() => {
     if (!socket) return;
-    socket.on("message", (message) => {
+    const addNewMessage = (message) => {
       newMessage(message, false)
-    })
+    }
+    socket.on("message", addNewMessage)
+
+    return () => socket.off("message", addNewMessage)
   }, [socket])
 
   const sendMessage = () => {
