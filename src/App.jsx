@@ -8,7 +8,7 @@ import { TicTacToeContextProvider } from "./Games/SuperTicTacToe/GameContext"
 import { SuperTicTacToeMenu } from "./Games/SuperTicTacToe/Menu"
 
 
-export const debugMode = true
+export const debugMode = false
 export const serverURL = debugMode ? "http://localhost:4000" : "https://games-backend-8gxe.onrender.com"
 export const clientURL = debugMode ? "http://localhost:5173" : "https://games-tahashah.netlify.app"
 

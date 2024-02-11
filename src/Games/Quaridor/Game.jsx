@@ -1,4 +1,4 @@
-import { useReducer } from "react"
+import { useEffect, useReducer } from "react"
 import { SocketProvider } from "../../components/SocketProvidor"
 import { defaultState, gameReducer } from "./gameReducer"
 import { QuaridorBoard } from "./Board"
