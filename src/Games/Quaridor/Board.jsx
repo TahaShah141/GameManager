@@ -40,7 +40,6 @@ export const QuaridorBoard = ({state, dispatch, makeMove, error, newGame, player
         {state.fences.map(fence => <Fence fence={fence} />)}
         {collapsed && state.fenceMode && <Fence fence={state.hoverFence}/>}
       </div>
-      {error && <p className='text-white landscape:hidden portrait:order-1 text-lg sm:text-3xl font-bold font-mono animate-pulse'>{error}</p>}
       <Controls state={state} dispatch={dispatch} makeMove={makeMove} newGame={newGame} playerNumber={playerNumber}/>
     </div>
   )

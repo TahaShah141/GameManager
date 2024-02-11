@@ -140,7 +140,7 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
       {((room && playerNumber !== undefined) || !room) ? 
       <>{ChildrenWithProps}</> : 
       <>{!locked && <p className='text-white font-mono text-xl sm:text-3xl animate-pulse'>Connecting</p>}</>}
-      {error && <p className='text-white portrait:hidden text-lg sm:text-3xl font-bold font-mono animate-pulse'>{error}</p>}
+      {error && <p className='text-white text-lg sm:text-3xl font-bold font-mono animate-pulse'>{error}</p>}
       {chat && !locked && room && <Chat socket={socket} room={room} collapsed={collapsed} setCollapsed={setCollapsed} messages={messages} setMessages={setMessages}/>}
     </>
   )
