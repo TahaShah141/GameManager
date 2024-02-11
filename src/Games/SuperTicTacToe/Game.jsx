@@ -5,6 +5,10 @@ import { useGameContext } from "./GameContext"
 export const SuperTicTacToe = () => {
   const {turn, dispatch} = useGameContext()
 
+  useEffect(() => {
+    document.title = "Super TicTacToe"
+  }, [])
+
   return (
     <SocketProvider
     state={{turn}} 

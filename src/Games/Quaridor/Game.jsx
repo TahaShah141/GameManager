@@ -5,6 +5,10 @@ import { QuaridorBoard } from "./Board"
 
 export const Quaridor = () => {
 
+  useEffect(() => {
+    document.title = "Quaridor"
+  }, [])
+
   const sessionPlayerCount = sessionStorage.getItem("playerCount")
   const [state, dispatch] = useReducer(gameReducer, defaultState(+sessionPlayerCount ? +sessionPlayerCount : 2))
 
