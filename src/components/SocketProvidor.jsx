@@ -125,7 +125,6 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
   React.cloneElement(child, {
     state,
     dispatch,
-    error,
     newGame,
     playerNumber,
     collapsed,

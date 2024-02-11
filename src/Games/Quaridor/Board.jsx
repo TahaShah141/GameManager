@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 const template = "1fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr 1fr 6fr 1fr"
 
-export const QuaridorBoard = ({state, dispatch, makeMove, error, newGame, playerNumber, collapsed}) => {
+export const QuaridorBoard = ({state, dispatch, makeMove, newGame, playerNumber, collapsed}) => {
 
   const borderColors = [
     "border-sky-600",
