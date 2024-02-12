@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { serverURL } from "../App"
+import { debugMode, serverURL } from "../App"
 import { io } from "socket.io-client"
 
 export const SocketProvider = ({state={}, dispatch, chat=true, children, onCollapseChange=()=>{}}) => {
@@ -92,9 +92,14 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
       setError("Reconnecting...")
     })
 
-    socket.on("disconnected", () => {
-      setLocked(true)
-      setError("Opponent Connecting...") 
+    socket.on("disconnected", (currentSize, playerLimit) => {
+      if (currentSize === playerLimit) {
+        setLocked(false)
+        setError("")
+      } else {
+        setLocked(true)
+        setError("Opponent Connecting...")
+      } 
     })
 
     socket.on("connected", (currentSize, playerLimit) => {
@@ -141,6 +146,11 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
       <>{!locked && <p className='text-white font-mono text-xl sm:text-3xl animate-pulse'>Connecting</p>}</>}
       {error && <p className='text-white text-lg sm:text-3xl font-bold font-mono animate-pulse'>{error}</p>}
       {chat && !locked && room && <Chat socket={socket} room={room} collapsed={collapsed} setCollapsed={setCollapsed} messages={messages} setMessages={setMessages}/>}
+      {debugMode && room && socket && 
+      <button className="bg-white text-black text-xl p-2 rounded-md" 
+      onClick={() => {socket.connected ? socket.disconnect() : socket.connect()}}>
+        {socket.connected ? "Disconnect" : "Reconnect"}  
+      </button>}
     </>
   )
 }
