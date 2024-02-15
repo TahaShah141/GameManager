@@ -53,6 +53,15 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
   //runs when chat shown/hidden
   useEffect(() => {
     onCollapseChange(collapsed)
+
+    const preventExit = (e) => {
+      e.preventDefault();
+      setCollapsed(false)
+    }
+
+    if (!collapsed) window.addEventListener("beforeunload", preventExit)
+
+    return () => window.removeEventListener("beforeunload", preventExit)
   }, [collapsed])
 
   //saves playerNumber
