@@ -42,6 +42,12 @@ export const gameReducer = (state, action) => {
           state.board[y][x] = 2
         }
         state.winner = state.turn
+      } else {
+        let found = false
+        for (let i = 0; i < state.cols; i++) {
+          if (state.board[0][i] === -1) found = true
+        }
+        if (!found) state.winner = 2
       }
 
       return {...state, turn: (state.turn+1) % 2}
