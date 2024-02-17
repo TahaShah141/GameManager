@@ -18,7 +18,7 @@ export const ConnectKBoard = ({state, makeMove, newGame, playerNumber, collapsed
 
   useEffect(() => {
     const resize = () => setSize(getSize(rows, cols))
-    resize()
+    setTimeout(() => resize(), 2000)
     window.addEventListener("resize", resize)
 
     return () => window.removeEventListener("resize", resize)
