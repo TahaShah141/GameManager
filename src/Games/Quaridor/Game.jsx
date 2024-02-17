@@ -9,8 +9,8 @@ export const Quaridor = () => {
     document.title = "Quaridor"
   }, [])
 
-  const sessionPlayerCount = sessionStorage.getItem("playerCount")
-  const [state, dispatch] = useReducer(gameReducer, defaultState(+sessionPlayerCount ? +sessionPlayerCount : 2))
+  const sessionPlayerCount = JSON.parse(sessionStorage.getItem("settings"))?.playerCount
+  const [state, dispatch] = useReducer(gameReducer, defaultState(sessionPlayerCount || 2))
 
   const onCollapseChange = (collapsed) =>{
     if (collapsed && state.fenceMode) dispatch({type: "SHOW"})

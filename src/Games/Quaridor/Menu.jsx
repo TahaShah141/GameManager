@@ -9,7 +9,7 @@ export const QuaridorMenu = () => {
   }, [])
 
   useEffect(()=> {
-    sessionStorage.setItem("playerCount", playerCount)
+    sessionStorage.setItem("settings", JSON.stringify({playerCount}))
   }, [playerCount])
 
   return (
@@ -27,7 +27,7 @@ export const QuaridorMenu = () => {
           </button>
         </div>
         <div className='flex gap-2 sm:gap-4 w-full'>
-          <Link to={`/lobby/quaridor/${playerCount}`} className='flex justify-center items-center flex-1 p-2 text-xl sm:p-4 xs:text-3xl font-bold border-4 rounded-xl border-black bg-red-500 hover:bg-red-600'>Online</Link>
+          <Link to={`/lobby/quaridor`} className='flex justify-center items-center flex-1 p-2 text-xl sm:p-4 xs:text-3xl font-bold border-4 rounded-xl border-black bg-red-500 hover:bg-red-600'>Online</Link>
           <Link to={"play"} className='flex justify-center items-center flex-1 p-2 text-xl sm:p-4 xs:text-3xl font-bold border-4 rounded-xl border-black bg-blue-500 hover:bg-blue-600'>Offline</Link>
         </div>
       </div>

@@ -6,7 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { clientURL, serverURL } from "../App"
 
 export const Lobby = ({reload=0}) => {
-  const {game, playerCount} = useParams()
+  const { game } = useParams()
+  const gameSettings = JSON.parse(sessionStorage.getItem("settings"))
   const [room, setRoom] = useState("")
   const [socket, setSocket] = useState()
   const [ready, setReady] = useState(false)
@@ -40,8 +41,7 @@ export const Lobby = ({reload=0}) => {
     if (!socket) return
 
     socket.on("connect", () => {
-      let count = +playerCount || 2
-      socket.emit("makeRoom", room, count, () => setReady(true))
+      socket.emit("makeRoom", room, gameSettings, () => setReady(true))
     })
 
     socket.on("joinRoom", (roomID) => {

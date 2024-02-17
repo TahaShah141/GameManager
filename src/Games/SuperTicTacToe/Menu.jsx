@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export const SuperTicTacToeMenu = () => {
 
   useEffect(() => {
     document.title = "Super TicTacToe"
+
+    sessionStorage.setItem("settings", JSON.stringify({playerCount: 2}))
   }, [])
 
   return (

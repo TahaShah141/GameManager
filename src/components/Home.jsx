@@ -9,14 +9,19 @@ export const Home = () => {
 
   const games = [
     {
-      name: "Super TicTacToe",
-      link: "/supertictactoe",
-      desc: "Imagine Tic Tac Toe, but better. This game plays by the normal rules of tictactoe, but on a bigger board. Players take turn to place their tiles on the highlighted boards, but there is a twist...The next player plays on the corresponding board of your turn. Win Boards to claim them and win the super board !!"
+      name: "ConnectK",
+      link: "/connectk",
+      desc: "Quaridor is a game of strategy and patience. The goal is to get your player to the other side of the board. You can either move your piece or place a fence to block the way. Each player has limited number of fences and once placed, they can't be picked up again. First one to make it to the other side wins"
     },
     {
       name: "Quaridor",
       link: "/quaridor",
       desc: "Quaridor is a game of strategy and patience. The goal is to get your player to the other side of the board. You can either move your piece or place a fence to block the way. Each player has limited number of fences and once placed, they can't be picked up again. First one to make it to the other side wins"
+    },
+    {
+      name: "Super TicTacToe",
+      link: "/supertictactoe",
+      desc: "Imagine Tic Tac Toe, but better. This game plays by the normal rules of tictactoe, but on a bigger board. Players take turn to place their tiles on the highlighted boards, but there is a twist...The next player plays on the corresponding board of your turn. Win Boards to claim them and win the super board !!"
     },
     {
       name: "Poke-memo",
@@ -28,11 +33,16 @@ export const Home = () => {
       link: "https://battleship141.netlify.app",
       desc: "Battleship was my first project using DOM-manipulation and vanilla CSS. It is a game where two players try to sink each other's ships by hitting a grid/board. A hit grants you another turn while a miss switches to the other player. Be the first to sink all the ships to win."
     },
+    // {
+    //   name: "Battle Ship",
+    //   link: "https://battleship141.netlify.app",
+    //   desc: "Battleship was my first project using DOM-manipulation and vanilla CSS. It is a game where two players try to sink each other's ships by hitting a grid/board. A hit grants you another turn while a miss switches to the other player. Be the first to sink all the ships to win."
+    // },
   ] 
   return (
     <div className="flex bg-black min-h-screen justify-center h-full w-full flex-col gap-2" >
       <h2 className="text-white text-3xl font-bold border-b-2 border-white w-max mx-auto p-2">Games by Taha Shah</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-2 md:px-12 xs:p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 grid-flow-row gap-4 p-2 md:px-12 xs:p-6">
         {games.map(game => <GameCard game={game} key={game.name} />)}
       </div>
     </div>

@@ -13,11 +13,11 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
   const [socket, setSocket] = useState()
 
   //get player count incase of reload
-  const sessionPlayerCount = sessionStorage.getItem("playerCount")
-  const [playerCount, setPlayerCount] = useState(+sessionPlayerCount ? +sessionPlayerCount : undefined)
+  const sessionSettings = JSON.parse(sessionStorage.getItem("settings"))
+  const [settings, setSettings] = useState(sessionSettings)
 
   //get player number incase of reload
-  const sessionPlayerNumber = sessionStorage.getItem("playerNumber")
+  const sessionPlayerNumber = JSON.parse(sessionStorage.getItem("playerNumber"))
   const [playerNumber, setPlayerNumber] = useState(sessionPlayerNumber !== null && room ? +sessionPlayerNumber : undefined)
 
   //if moves not allowed
@@ -34,21 +34,21 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
       dispatch({type: "MOVE", payload})
     }, [room, socket, locked, collapsed])
 
-  const syncMoves = (moveStack, playerCount) => {
-    dispatch({type: "RESET", payload: {playerCount}})
+  const syncMoves = (moveStack, settings) => {
+    dispatch({type: "RESET", payload: {...settings}})
     for (let i = 0; i < moveStack.length; i++) 
       dispatch({type: "MOVE", payload: moveStack[i]})
   }
 
   useEffect(() => {
-    sessionStorage.setItem("playerCount", playerCount)
-  }, [playerCount])
+    sessionStorage.setItem("settings", JSON.stringify(settings))
+  }, [settings])
 
   //generic function that resets game state when playerCount changes
   const newGame = useCallback(() => {
-    if (socket) socket.emit("newGame", room, playerCount)
-    dispatch({type: "RESET", payload: {playerCount}})
-  }, [socket, playerCount])
+    if (socket) socket.emit("newGame", room, settings)
+    dispatch({type: "RESET", payload: {...settings}})
+  }, [socket, settings])
 
   //runs when chat shown/hidden
   useEffect(() => {
@@ -57,7 +57,7 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
 
   //saves playerNumber
   useEffect(() => {
-    if (playerNumber !== undefined) sessionStorage.setItem("playerNumber", playerNumber)
+    if (playerNumber !== undefined) sessionStorage.setItem("playerNumber", JSON.stringify(playerNumber))
   }, [playerNumber])
   
   //connects to socket if room present
@@ -71,9 +71,9 @@ export const SocketProvider = ({state={}, dispatch, chat=true, children, onColla
     if (!socket) return;
 
     socket.on("connect", () => {
-      socket.emit("joinRoom", room, (size, playerCount) => {
-        if (size <= playerCount) {
-          setPlayerCount(playerCount)
+      socket.emit("joinRoom", room, (size, settings) => {
+        if (size <= settings.playerCount) {
+          setSettings(settings)
           setPlayerNumber(p => p === undefined ? size - 1 : p)
           socket.emit("connected", room)
           socket.emit("sync", room, syncMoves)
