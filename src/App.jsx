@@ -10,7 +10,7 @@ import { ConnectKMenu } from "./Games/ConnectK/Menu"
 import { ConnectK } from "./Games/ConnectK/Game"
 
 
-export const debugMode = true
+export const debugMode = false
 export const serverURL = debugMode ? "http://localhost:4000" : "https://games-backend-8gxe.onrender.com"
 export const clientURL = debugMode ? "http://localhost:5173" : "https://games-tahashah.netlify.app"
 
