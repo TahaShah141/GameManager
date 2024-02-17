@@ -50,8 +50,8 @@ const Cell = ({size, value, makeMove}) => {
   ]
 
   return (
-  <div className="p-0.5 xs:p-1 lg:p-2" style={{width: `${size}px`, height: `${size}px`}}>
-    <div onClick={makeMove} className={`w-full h-full ${colors[value+1]} rounded-full border-2 xs:border-4 md:border-8`}>
+  <div className="p-0.5 xs:p-1" style={{width: `${size}px`, height: `${size}px`}}>
+    <div onClick={makeMove} className={`w-full h-full ${colors[value+1]} rounded-full border-2 xs:border-4`}>
 
     </div>
   </div>
