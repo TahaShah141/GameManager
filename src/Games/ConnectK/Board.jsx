@@ -27,7 +27,7 @@ export const ConnectKBoard = ({state, makeMove, newGame, playerNumber, collapsed
   return (
     <>
     <div className={`flex portrait:flex-col gap-4 sm:gap-8 items-center justify-center landscape:h-4/5 portrait:w-4/5`} >
-      <div className={`flex flex-col rounded-xl overflow-hidden p-4 border-4 bg-neutral-900
+      <div className={`flex flex-col rounded-lg md:rounded-xl overflow-hidden p-2 md:p-4 border-2 md:border-4 bg-neutral-900
       ${playerNumber !== undefined ? playerNumber === 0 ? "border-sky-500" : "border-rose-500" : "border-black"}`}>
         {board.map((row, r) => 
         <div className="flex">
@@ -50,8 +50,8 @@ const Cell = ({size, value, makeMove}) => {
   ]
 
   return (
-  <div className="p-1 lg:p-2" style={{width: `${size}px`, height: `${size}px`}}>
-    <div onClick={makeMove} className={`w-full h-full ${colors[value+1]} rounded-full border-4 md:border-8`}>
+  <div className="p-0.5 xs:p-1 lg:p-2" style={{width: `${size}px`, height: `${size}px`}}>
+    <div onClick={makeMove} className={`w-full h-full ${colors[value+1]} rounded-full border-2 xs:border-4 md:border-8`}>
 
     </div>
   </div>
