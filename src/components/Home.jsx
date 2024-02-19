@@ -11,7 +11,7 @@ export const Home = () => {
     {
       name: "ConnectK",
       link: "/connectk",
-      desc: "Quaridor is a game of strategy and patience. The goal is to get your player to the other side of the board. You can either move your piece or place a fence to block the way. Each player has limited number of fences and once placed, they can't be picked up again. First one to make it to the other side wins"
+      desc: "ConnectK is like Connect4 but for any sized board and winning conditions. Each player takes turns to place discs in one of the available columns of the board. The disc falls in the column until it hits the bottom or another disc below it. Connect K discs in a row to win !!"
     },
     {
       name: "Quaridor",
